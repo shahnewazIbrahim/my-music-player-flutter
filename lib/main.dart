@@ -35,7 +35,8 @@ class _MusicPlayerState extends State<MusicPlayer> {
     super.initState();
     _audioPlayer = AudioPlayer();
     _positionStream = _audioPlayer.positionStream;
-    _durationStream = _audioPlayer.durationStream.map((duration) => duration ?? Duration.zero);
+    _durationStream = _audioPlayer.durationStream
+        .map((duration) => duration ?? Duration.zero);
   }
 
   @override
@@ -75,7 +76,8 @@ class _MusicPlayerState extends State<MusicPlayer> {
                           min: 0.0,
                           max: total,
                           onChanged: (value) {
-                            _audioPlayer.seek(Duration(milliseconds: value.toInt()));
+                            _audioPlayer
+                                .seek(Duration(milliseconds: value.toInt()));
                           },
                         ),
                       ],
@@ -121,7 +123,9 @@ class _MusicPlayerState extends State<MusicPlayer> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.music_note),
         onPressed: () async {
-          await _audioPlayer.setUrl('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+          // await _audioPlayer.setUrl('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+          await _audioPlayer.setUrl(
+              'https://download.quranicaudio.com/quran/adel_kalbani/018.mp3');
           _audioPlayer.play();
         },
       ),
